@@ -4,7 +4,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/otoneko1102/win11-fix-exp-right-click)
 ![GitHub downloads](https://img.shields.io/github/downloads/otoneko1102/win11-fix-exp-right-click/total)
 
-**[🇯🇵 Japanese (日本語)](./README-ja.md)**
+**[Japanese (日本語)](./README-ja.md)**
 
 ---
 
