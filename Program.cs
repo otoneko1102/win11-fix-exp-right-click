@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Win11FixExpRightClick
@@ -34,19 +35,20 @@ namespace Win11FixExpRightClick
     {
       string title = "Win11 Fix Explorer Right Click";
 
+      // 説明文を「エクスプローラーの再起動」に合わせて変更
       string descText = IsJP
         ? "Windows 11のエクスプローラー右クリックメニューのスタイルを切り替えます。\n\n" +
           "【Win10スタイルにする】\n" +
           "レジストリにキーを追加し、旧来のメニューを表示させます。\n\n" +
           "【Win11標準に戻す】\n" +
           "追加したレジストリキーを削除し、デフォルトに戻します。\n\n" +
-          "※設定の反映にはPCの再起動が必要です。"
+          "※設定の反映にはエクスプローラーの再起動が必要です。"
         : "Switch the context menu style of Windows 11 File Explorer.\n\n" +
           "[Enable Win10 Style]\n" +
           "Adds a registry key to show the classic context menu.\n\n" +
           "[Restore Win11 Default]\n" +
           "Deletes the registry key to revert to the default menu.\n\n" +
-          "* A system restart is required to apply changes.";
+          "* Restarting Windows Explorer is required to apply changes.";
 
       string agreeText = IsJP
         ? "レジストリ操作のリスクを理解し、自己責任で実行します。"
@@ -130,8 +132,8 @@ namespace Win11FixExpRightClick
           proc?.WaitForExit();
 
           string restartMsg = IsJP
-            ? $"{successMsg}\n反映するには再起動が必要です。\n\n今すぐ再起動しますか？"
-            : $"{successMsg}\nA restart is required to apply changes.\n\nRestart now?";
+            ? $"{successMsg}\n反映するにはエクスプローラーの再起動が必要です。\n\n今すぐエクスプローラーを再起動しますか？\n(開いているフォルダ等は閉じられます)"
+            : $"{successMsg}\nWindows Explorer needs to restart to apply changes.\n\nRestart Explorer now?\n(Open folders will be closed)";
 
           string title = IsJP ? "完了" : "Completed";
 
@@ -143,7 +145,7 @@ namespace Win11FixExpRightClick
 
           if (result == DialogResult.Yes)
           {
-            Process.Start("shutdown.exe", "/r /t 0");
+            RestartExplorer();
           }
 
           Application.Exit();
@@ -153,6 +155,30 @@ namespace Win11FixExpRightClick
       {
         string errorTitle = IsJP ? "エラー" : "Error";
         MessageBox.Show($"{errorTitle}: {ex.Message}", errorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void RestartExplorer()
+    {
+      try
+      {
+        foreach (Process p in Process.GetProcessesByName("explorer"))
+        {
+          p.Kill();
+        }
+
+        Thread.Sleep(500);
+
+        ProcessStartInfo startInfo = new ProcessStartInfo("explorer.exe");
+        startInfo.UseShellExecute = true;
+        Process.Start(startInfo);
+      }
+      catch (Exception ex)
+      {
+        string msg = IsJP
+          ? $"エクスプローラーの再起動に失敗しました。\n手動でPCを再起動してください。\n{ex.Message}"
+          : $"Failed to restart Explorer.\nPlease restart your PC manually.\n{ex.Message}";
+        MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
   }
