@@ -6,9 +6,21 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+
+    <PublishTrimmed>true</PublishTrimmed>
+    <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+
+    <PublishReadyToRun>false</PublishReadyToRun>
+
+    <DebuggerSupport>false</DebuggerSupport>
+    <DebugType>none</DebugType>
+
   </PropertyGroup>
 
 </Project>
