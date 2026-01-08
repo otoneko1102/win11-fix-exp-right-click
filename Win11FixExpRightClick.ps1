@@ -6,7 +6,6 @@
   Equivalent to the EXE version.
 #>
 
-# --- 1. Admin Privilege Check ---
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
   try {
@@ -19,21 +18,15 @@ if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Adm
   }
 }
 
-# --- 2. Load Assemblies ---
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
-# --- 3. Language Detection ---
 $isJP = [System.Globalization.CultureInfo]::CurrentUICulture.Name.StartsWith("ja")
-
-# --- 4. Logic Functions ---
 
 function Restart-Explorer {
   try {
-    # Kill explorer
     Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue
     Start-Sleep -Milliseconds 500
-    # Start explorer
     Start-Process explorer.exe
   }
   catch {
@@ -58,7 +51,6 @@ function Show-RestartSelectionDialog {
   $lbl.Size = New-Object System.Drawing.Size(340, 60)
   $dialog.Controls.Add($lbl)
 
-  # Button 1: Restart Explorer
   $btnExp = New-Object System.Windows.Forms.Button
   $btnExp.Text = if ($isJP) { "エクスプローラー再起動 (高速)" } else { "Restart Explorer (Fast)" }
   $btnExp.Location = New-Object System.Drawing.Point(40, 90)
@@ -66,7 +58,6 @@ function Show-RestartSelectionDialog {
   $btnExp.DialogResult = 'Yes'
   $dialog.Controls.Add($btnExp)
 
-  # Button 2: Restart PC
   $btnPC = New-Object System.Windows.Forms.Button
   $btnPC.Text = if ($isJP) { "PCを再起動 (安全・推奨)" } else { "Restart PC (Safe & Recommended)" }
   $btnPC.Location = New-Object System.Drawing.Point(40, 135)
@@ -74,7 +65,6 @@ function Show-RestartSelectionDialog {
   $btnPC.DialogResult = 'OK'
   $dialog.Controls.Add($btnPC)
 
-  # Button 3: Later
   $btnLater = New-Object System.Windows.Forms.Button
   $btnLater.Text = if ($isJP) { "あとで" } else { "Later" }
   $btnLater.Location = New-Object System.Drawing.Point(40, 180)
@@ -110,8 +100,6 @@ function Run-RegistryCommand {
     [System.Windows.Forms.MessageBox]::Show("Error: $($_.Exception.Message)", "Error", 'OK', 'Error')
   }
 }
-
-# --- 5. Build Main GUI ---
 
 $mainForm = New-Object System.Windows.Forms.Form
 $title = if ($isJP) { "Win11 右クリックメニュー切替" } else { "Win11 Fix Explorer Right Click" }
