@@ -11,10 +11,7 @@
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 
-    <PublishTrimmed>true</PublishTrimmed>
-
-    <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
-    <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+    <PublishTrimmed>false</PublishTrimmed>
 
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
 
