@@ -21,7 +21,7 @@ PC全体を再起動することなく、エクスプローラーのみを再起
 
 ### ダウンロードと使い方
 
-**[Releases](/releases)** ページから、お好みのバージョンをダウンロードしてください。
+**[Releases](https://github.com/otoneko1102/win11-fix-exp-right-click/releases)** ページから、お好みのバージョンをダウンロードしてください。
 
 #### A. EXE版（推奨）
 設定不要ですぐに使いたい方向けです。

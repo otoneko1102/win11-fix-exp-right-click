@@ -21,7 +21,7 @@ It includes a feature to restart Windows Explorer instantly to apply changes wit
 
 ### Download & Usage
 
-Go to the **[Releases](/releases)** page and choose the version that suits you.
+Go to the **[Releases](https://github.com/otoneko1102/win11-fix-exp-right-click/releases)** page and choose the version that suits you.
 
 #### Option A: EXE Version (Recommended)
 Best for most users. No setup required.
