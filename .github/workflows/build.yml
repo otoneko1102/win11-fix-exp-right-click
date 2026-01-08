@@ -25,7 +25,7 @@ jobs:
       run: dotnet restore
 
     - name: Publish EXE
-      run: dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true --self-contained false -o ./publish
+      run: dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true --self-contained true -o ./publish
 
     - name: Get Short SHA
       id: vars
