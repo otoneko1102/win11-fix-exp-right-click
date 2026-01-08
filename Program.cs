@@ -145,10 +145,8 @@ namespace Win11FixExpRightClick
           {
             Process.Start("shutdown.exe", "/r /t 0");
           }
-          else
-          {
-            Application.Exit();
-          }
+
+          Application.Exit();
         }
       }
       catch (Exception ex)
