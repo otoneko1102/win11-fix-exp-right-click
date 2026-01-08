@@ -31,12 +31,20 @@ jobs:
       id: vars
       run: echo "sha_short=$($env:GITHUB_SHA.Substring(0, 7))" >> $env:GITHUB_OUTPUT
 
+    - name: Compress to ZIP (Ultra)
+      run: |
+        $productName = "Win11FixExpRightClick"
+        $tag = "${{ steps.vars.outputs.sha_short }}"
+        $zipName = "Release-$productName`_$tag.zip"
+
+        7z a -tzip -mx=9 "./publish/$zipName" "./publish/$productName.exe"
+
     - name: Create Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ steps.vars.outputs.sha_short }}
         name: Release ${{ steps.vars.outputs.sha_short }}
-        files: ./publish/*.exe
+        files: ./publish/*.zip
         draft: false
         prerelease: false
         generate_release_notes: true
