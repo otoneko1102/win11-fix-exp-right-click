@@ -1,8 +1,8 @@
 # Win11 Fix Explorer Right Click
 
-![Build Status](https://github.com/USERNAME/REPOSITORY/actions/workflows/build.yml/badge.svg)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/USERNAME/REPOSITORY)
-![GitHub downloads](https://img.shields.io/github/downloads/USERNAME/REPOSITORY/total)
+![Build Status](https://github.com/otoneko1102/win11-fix-exp-right-click/actions/workflows/build.yml/badge.svg)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/otoneko1102/win11-fix-exp-right-click)
+![GitHub downloads](https://img.shields.io/github/downloads/otoneko1102/win11-fix-exp-right-click/total)
 
 **[🇯🇵 Japanese (日本語)](./README-ja.md)**
 
