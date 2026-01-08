@@ -1,0 +1,36 @@
+name: Manual Build (No Release)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Publish EXE
+      run: dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true --self-contained true -o ./publish
+
+    - name: Generate Random Suffix
+      id: rand
+      run: |
+        $suffix = -join ((48..57) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+        echo "suffix=$suffix" >> $env:GITHUB_OUTPUT
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ManualBuild-Win11FixExpRightClick_${{ steps.rand.outputs.suffix }}
+        path: ./publish/*.exe
+        retention-days: 3
