@@ -1,6 +1,6 @@
 # Win11 Fix Explorer Right Click
 
-![Build Status](https://github.com/otoneko1102/win11-fix-exp-right-click/actions/workflows/build.yml/badge.svg)
+![Build Status](https://github.com/otnc/win11-fix-exp-right-click/actions/workflows/build.yml/badge.svg)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/otoneko1102/win11-fix-exp-right-click)
 ![GitHub downloads](https://img.shields.io/github/downloads/otoneko1102/win11-fix-exp-right-click/total)
 
@@ -21,7 +21,7 @@ PC全体を再起動することなく、エクスプローラーのみを再起
 
 ### ダウンロードと使い方
 
-**[Releases](https://github.com/otoneko1102/win11-fix-exp-right-click/releases)** ページから、お好みのバージョンをダウンロードしてください。
+**[Releases](https://github.com/otnc/win11-fix-exp-right-click/releases)** ページから、お好みのバージョンをダウンロードしてください。
 
 #### A. EXE版（推奨）
 設定不要ですぐに使いたい方向けです。
