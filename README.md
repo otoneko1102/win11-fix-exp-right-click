@@ -1,6 +1,6 @@
 # Win11 Fix Explorer Right Click
 
-![Build Status](https://github.com/otoneko1102/win11-fix-exp-right-click/actions/workflows/build.yml/badge.svg)
+![Build Status](https://github.com/otnc/win11-fix-exp-right-click/actions/workflows/build.yml/badge.svg)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/otoneko1102/win11-fix-exp-right-click)
 ![GitHub downloads](https://img.shields.io/github/downloads/otoneko1102/win11-fix-exp-right-click/total)
 
@@ -21,7 +21,7 @@ It includes a feature to restart Windows Explorer instantly to apply changes wit
 
 ### Download & Usage
 
-Go to the **[Releases](https://github.com/otoneko1102/win11-fix-exp-right-click/releases)** page and choose the version that suits you.
+Go to the **[Releases](https://github.com/otnc/win11-fix-exp-right-click/releases)** page and choose the version that suits you.
 
 #### Option A: EXE Version (Recommended)
 Best for most users. No setup required.
